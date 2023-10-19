@@ -47,3 +47,17 @@ func TestFutureValueQuarterly(t *testing.T) {
 		t.Errorf("actual %f; expected %f", actualFutureValue, expectedFutureValue)
 	}
 }
+
+func TestFutureValueMonthly(t *testing.T) {
+	var presentValue float64 = 2000
+	var interestRate float64 = 0.1
+	var termInYears float64 = 1
+	var periodicity = finance_periodicity.New(finance_periodicity.Monthly)
+
+	var expectedFutureValue float64 = 2209.426135
+	var actualFutureValue = FutureValue(presentValue, interestRate, periodicity, termInYears)
+
+	if fmt.Sprintf("%.6f", expectedFutureValue) != fmt.Sprintf("%.6f", actualFutureValue) {
+		t.Errorf("actual %f; expected %f", actualFutureValue, expectedFutureValue)
+	}
+}
