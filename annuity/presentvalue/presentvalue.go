@@ -1,23 +1,14 @@
-package annuity
+package presentvalue
 
 import (
 	"math"
 )
 
-func presentValue(
+// Calculates present value
+func Calculate(
 	futureValue float64,
 	interestRate float64,
 	termInYears float64,
 ) float64 {
 	return futureValue / math.Pow(1+interestRate, termInYears)
-}
-
-func PresentValue(
-	futureValue float64,
-	interestRate float64,
-	termInYears float64,
-) float64 {
-	return presentValue(
-		futureValue, interestRate, termInYears,
-	)
 }

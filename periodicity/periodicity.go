@@ -12,40 +12,36 @@ const Monthly string = "periodicity.monthly"
 const Daily string = "periodicity.daily"
 
 type Periodicity struct {
-	key           string
-	periodsNumber int
+	key string
 }
 
+// Returns a new Periodicity
 func New(periodicityKey string) Periodicity {
 	if !keyExists(periodicityKey) {
 		log.Fatalf(fmt.Sprintf("finance: unsupported periodicity \"%v\"", periodicityKey))
 	}
 
 	return Periodicity{
-		key:           periodicityKey,
-		periodsNumber: setPeriodsNumber(periodicityKey),
+		key: periodicityKey,
 	}
 }
 
-func (periodicity Periodicity) GetPeriodsNumber() int {
-	return periodicity.periodsNumber
-}
-
-func setPeriodsNumber(key string) int {
+// Returns the number of periods in a year
+func (periodicity Periodicity) GetPeriodsNumberInAYear() int {
 	var periodsNumber int
 
-	if key == Annual {
+	if periodicity.key == Annual {
 		periodsNumber = 1
-	} else if key == SemiAnnual {
+	} else if periodicity.key == SemiAnnual {
 		periodsNumber = 2
-	} else if key == Quarterly {
+	} else if periodicity.key == Quarterly {
 		periodsNumber = 4
-	} else if key == Monthly {
+	} else if periodicity.key == Monthly {
 		periodsNumber = 12
-	} else if key == Daily {
+	} else if periodicity.key == Daily {
 		periodsNumber = 365
 	} else {
-		log.Fatalf(fmt.Sprintf("finance: unable to set period numbers from periodicity \"%v\"", key))
+		log.Fatalf(fmt.Sprintf("finance: unable to set period numbers from periodicity \"%v\"", periodicity.key))
 	}
 
 	return periodsNumber
