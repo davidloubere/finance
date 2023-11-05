@@ -19,7 +19,7 @@ func CalculateAmortizationSchedule(
 	periodsNumberInAYear := periodicity.GetPeriodsNumberInAYear()
 	periodicPayment := periodicpayment.Calculate(presentValue, interestRate, periodicity, termInYears)
 
-	for i := 1; i <= int(termInYears)*periodsNumberInAYear; i++ {
+	for i := 1; i <= int(termInYears*float64(periodsNumberInAYear)); i++ {
 		interestPayment := interestpayment.Calculate(presentValue, interestRate, periodicity)
 		principalPayment := periodicPayment - interestPayment
 
