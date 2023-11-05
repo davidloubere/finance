@@ -1,12 +1,12 @@
 package finance
 
 import (
-	amortization "github.com/davidloubere/finance/amortization"
-	interestpayment "github.com/davidloubere/finance/amortization/interestpayment"
-	futurevalue "github.com/davidloubere/finance/annuity/futurevalue"
-	periodicpayment "github.com/davidloubere/finance/annuity/periodicpayment"
-	presentvalue "github.com/davidloubere/finance/annuity/presentvalue"
-	periodicity "github.com/davidloubere/finance/periodicity"
+	"github.com/davidloubere/finance/amortization"
+	"github.com/davidloubere/finance/amortization/interestpayment"
+	"github.com/davidloubere/finance/annuity/futurevalue"
+	"github.com/davidloubere/finance/annuity/periodicpayment"
+	"github.com/davidloubere/finance/annuity/presentvalue"
+	"github.com/davidloubere/finance/periodicity"
 )
 
 func CalculateAmortizationSchedule(
